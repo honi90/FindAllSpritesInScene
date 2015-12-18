@@ -17,22 +17,17 @@ public class CustomMenus
 		const string prefabPostFix = "*.prefab";
 		const string absoultePath = "FilePath"
 			
-			ListDictionary<string, string> spriteNames = new ListDictionary<string, string>();
+		ListDictionary<string, string> spriteNames = new ListDictionary<string, string>();
 		
 		string[] prefabPathes = Directory.GetFiles(Application.dataPath + fixedPrefabPath, prefabPostFix, SearchOption.AllDirectories);
 		
-		//		Debug.Log("Test PrefabPathes : " + prefabPathes[0]);
 		
 		foreach (string prefabPath in prefabPathes)
 		{
 			string prefabPath1 = prefabPath.Replace("\\", "/");
 			prefabPath1 = prefabPath1.Replace(absoultePath, "");
 			
-			//			Debug.Log("Prefab Path1 : " +prefabPath1);
-			
 			GameObject prefab = AssetDatabase.LoadAssetAtPath(prefabPath1, typeof(GameObject)) as GameObject;
-			
-			//			Debug.Log("Prefab Name : " + prefab);
 			
 			Transform[] allTransForms = prefab.GetComponentsInChildren<Transform>(true);
 			
